@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   url:  'http://localhost:8080',
-  token: 'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJhc3RpSldUIiwic3ViIjoibHVpczUwMWFuZ2VsIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTU5NzY' +
-    '0MTcwOCwiZXhwIjoxNTk3NjQ3NzA4fQ.lKHIJLSq1Fqcl0k_R1DoXDaYffizDQ7Ln8jAYH5bMRDK61xrR0g_0gW0qqWjduj7yRzFzbkiuw6WsVuSKQPFuA'
+  token: 'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJhc3RpSldUIiwic3ViIjoibHVpczUwMWFuZ2VsIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTU5Nz' +
+    'Y3NDUyNywiZXhwIjoxNTk3NjgwNTI3fQ.LoQte7b8rExGQ7bir3lVMaf6gQ37bHRLy8AO7XNl6mQ0D3r0oTcjOtP_uMJGo-bypEotaRqTDKwOmk0CbIUlUQ'
 };
 
 /*

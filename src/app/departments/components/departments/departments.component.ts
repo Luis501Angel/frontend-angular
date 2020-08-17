@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ToastrService } from 'ngx-toastr';
 import { DepartmentDataService } from '../../services/department.data.service';
 import {Department} from '../../models/department';
 
@@ -16,7 +16,7 @@ export class DepartmentsComponent implements OnInit {
   activeCreate: boolean;
   activeEdit: boolean;
 
-  constructor(private departmentService: DepartmentDataService) { }
+  constructor(private departmentService: DepartmentDataService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.activeCreate = true;
@@ -29,6 +29,7 @@ export class DepartmentsComponent implements OnInit {
   createDepartment() {
     this.departmentService.create(this.department).subscribe(res => {
       if (res) {
+        this.toastr.success('Agregado exitosamente', 'Departamento');
         this.getDepartments();
         this.department = new Department();
       }
@@ -59,6 +60,7 @@ export class DepartmentsComponent implements OnInit {
   updateDepartment() {
     this.departmentService.update(this.department).subscribe(res => {
       if (res) {
+        this.toastr.success('Actualizado exitosamente', 'Departamento');
         this.titleCard = 'Agregar departamento';
         this.activeCreate = true;
         this.activeEdit = false;
@@ -71,6 +73,7 @@ export class DepartmentsComponent implements OnInit {
   deleteDepartment(id) {
     this.departmentService.delete(id).subscribe(res => {
       if (res) {
+        this.toastr.success('Eliminado exitosamente', 'Departamento');
         this.getDepartments();
       }
     });
