@@ -16,6 +16,7 @@ import { EmployeesComponent } from './employees/components/employees/employees.c
 import { FormsModule } from '@angular/forms';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { UserComponent } from './user/components/user/user.component';
+import { LoginComponent } from './user/components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserComponent } from './user/components/user/user.component';
     DepartmentsComponent,
     EmployeesComponent,
     SidebarComponent,
-    UserComponent
+    UserComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,

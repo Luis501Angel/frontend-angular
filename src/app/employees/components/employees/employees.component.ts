@@ -32,4 +32,50 @@ export class EmployeesComponent implements OnInit {
     });
   }
 
+  getEmployee(id) {
+    this.employeeService.get(id).subscribe( res => {
+      if (res) {
+        this.employee = res;
+      }
+    });
+  }
+
+  createEmployee() {
+    this.employeeService.create(this.employee).subscribe(res => {
+      if (res) {
+        this.toastr.success( 'Agregado exitosamente', 'Empleado');
+        this.getEmployees();
+        this.employee = new Employee();
+      }
+    });
+  }
+
+  activeEditEmployee(id) {
+    this.titleCard = 'Actualizar empleado';
+    this.activeEdit = true;
+    this.activeCreate = false;
+    this.getEmployee(id);
+  }
+
+  updateEmployee() {
+    this.employeeService.update(this.employee).subscribe( res => {
+      if (res) {
+        this.toastr.success('Actualizado exitosamente', 'Empleado');
+        this.titleCard = 'Agregar empleado';
+        this.activeCreate = true;
+        this.activeEdit = false;
+        this.employee = new Employee();
+        this.getEmployees();
+      }
+    });
+  }
+
+  deleteEmployee(id) {
+    this.employeeService.delete(id).subscribe(res => {
+        if (res) {
+        this.toastr.success( 'Eliminado exitosamente', 'Empleado');
+        this.getEmployees();
+      }
+    });
+  }
 }
