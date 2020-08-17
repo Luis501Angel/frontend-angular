@@ -1,0 +1,66 @@
+<div class="container p-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <!-- Formulario -->
+      <div class="card rounded">
+        <div class="card-header">
+          <div class="card-title text-center">
+            <h5>{{titleCard}}</h5>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Nombre: </label>
+                <input type="text" class="form-control" [(ngModel)]="department.nameDepartment">
+              </div>
+
+              <div class="col-md-12">
+                <button class="btn btn-primary float-right" (click)="createDepartment()" *ngIf="activeCreate">Guardar</button>
+              </div>
+
+              <div class="col-md-12">
+                <button class="btn btn-primary float-right" (click)="updateDepartment()" *ngIf="activeEdit">Actualizar</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+      <h3>Departamentos: </h3>
+      <!-- Card lista -->
+      <div class="card rounded" *ngFor="let department of departments">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Clave: </label>
+                <p class="card-text">{{department.idDepartment}}</p>
+              </div>
+            </div>
+
+            <div class="col-sm-2">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Nombre: </label>
+                <p class="card-text">{{department.nameDepartment}}</p>
+              </div>
+            </div>
+
+            <div class="col-md-10">
+              <button class="btn btn-info float-right" data-toggle="modal"
+                      (click)="activeEditDepartment(department.idDepartment)">Editar</button>
+            </div>
+
+            <div class="col-md-2">
+              <button class="btn btn-danger float-right" (click)="deleteDepartment(department.idDepartment)">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
