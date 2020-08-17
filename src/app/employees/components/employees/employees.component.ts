@@ -70,7 +70,7 @@ export class EmployeesComponent implements OnInit {
     });
   }
 
-  delteEmployee(id) {
+  deleteEmployee(id) {
     this.employeeService.delete(id).subscribe(res => {
         if (res) {
         this.toastr.success( 'Eliminado exitosamente', 'Empleado');
