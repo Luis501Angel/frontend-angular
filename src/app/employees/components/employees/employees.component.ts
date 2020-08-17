@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Employee} from '../../models/employee';
+import {ToastrService} from 'ngx-toastr';
+import {EmployeesDataService} from '../../services/employees.data.service';
 
 @Component({
   selector: 'app-employees',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeesComponent implements OnInit {
 
-  constructor() { }
+  employees: any;
+  employee: Employee;
+  titleCard: string;
+  activeCreate: boolean;
+  activeEdit: boolean;
+
+  constructor(private employeeService: EmployeesDataService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.activeCreate = true;
+    this.activeEdit = false;
+    this.titleCard = 'Agregar Empleado';
+    this.employee = new Employee();
+    this.getEmployees();
+  }
+
+  getEmployees() {
+    this.employeeService.getAll().subscribe(res => {
+      this.employees = res;
+    });
   }
 
 }

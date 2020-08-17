@@ -4,6 +4,6 @@ export class Employee {
   idEmployee: bigint;
   nameEmployee: string;
   addressEmployee: string;
-  phoneEmployee: string;
+  phoneNumberEmployee: string;
   department: Department;
 }

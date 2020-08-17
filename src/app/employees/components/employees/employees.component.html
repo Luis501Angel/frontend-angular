@@ -1,1 +1,91 @@
-<p>employees works!</p>
+<div class="container p-4">
+  <div class="row">
+    <div class="col-sm-5 p-xl-5">
+      <!-- Formulario -->
+      <div class="card rounded">
+        <div class="card-header">
+          <div class="card-title text-center">
+            <h5>{{titleCard}}</h5>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Nombre: </label>
+                <input type="text" class="form-control" [(ngModel)]="employee.nameEmployee">
+              </div>
+
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Direccion </label>
+                <input type="text" class="form-control" [(ngModel)]="employee.addressEmployee">
+              </div>
+
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Telefono </label>
+                <input type="text" class="form-control" [(ngModel)]="employee.phoneNumberEmployee">
+              </div>
+
+              <div class="col-md-12">
+                <button class="btn btn-primary float-right" (click)="createDepartment()" *ngIf="activeCreate">Guardar</button>
+              </div>
+
+              <div class="col-md-12">
+                <button class="btn btn-primary float-right" (click)="updateDepartment()" *ngIf="activeEdit">Actualizar</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-7">
+      <h3>Empleados:</h3>
+      <!-- Card lista -->
+      <div class="card rounded" *ngFor="let employee of employees">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Clave: </label>
+                <p class="card-text">{{employee.idEmployee}}</p>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Nombre: </label>
+                <p class="card-text">{{employee.nameEmployee}}</p>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Direccion: </label>
+                <p class="card-text">{{employee.addressEmployee}}</p>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Telefono: </label>
+                <p class="card-text">{{employee.phoneNumberEmployee}}</p>
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <button class="btn btn-info float-right" data-toggle="modal"
+                      (click)="activeEditEmployee(employee.idEmployee)">Editar</button>
+            </div>
+
+            <div class="col-md-2">
+              <button class="btn btn-danger float-right" (click)="deleteEmployee(employee.idEmployee)">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
