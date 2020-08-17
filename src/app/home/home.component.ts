@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DepartmentDataService } from '../../departments/services/department.data.service';
-import { EmployeesDataService } from '../../employees/services/employees.data.service';
+import { DepartmentDataService } from '../departments/services/department.data.service';
+import { EmployeesDataService } from '../employees/services/employees.data.service';
 
 @Component({
   selector: 'app-home',

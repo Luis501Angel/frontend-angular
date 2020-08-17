@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import {Department} from '../models/department';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,27 @@ export class DepartmentDataService {
     })
   };
 
+  create(department: Department): Observable<Department> {
+    return this.http.post<Department>(environment.url + '/departments', department, this.httpOptions).pipe(retry(1),
+      catchError(this.handleError));
+  }
+
   getAll() {
     return this.http.get(environment.url + '/departments', this.httpOptions).pipe(retry(1), catchError(this.handleError));
+  }
+
+  get(id): Observable<Department> {
+    return this.http.get<Department>(environment.url + '/departments/' + id, this.httpOptions).pipe(retry(1), catchError(this.handleError));
+  }
+
+  delete(id) {
+    return this.http.delete<Department>(environment.url + '/departments/' + id, this.httpOptions).pipe(retry(1),
+      catchError(this.handleError));
+  }
+
+  update(department: Department): Observable<Department> {
+    return this.http.put<Department>(environment.url + '/departments', department, this.httpOptions).pipe(retry(1),
+      catchError(this.handleError));
   }
 
   handleError(error) {
