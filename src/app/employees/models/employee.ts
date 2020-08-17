@@ -5,5 +5,5 @@ export class Employee {
   nameEmployee: string;
   addressEmployee: string;
   phoneNumberEmployee: string;
-  department: Department;
+  department: number;
 }

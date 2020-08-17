@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Employee} from '../../models/employee';
 import {ToastrService} from 'ngx-toastr';
 import {EmployeesDataService} from '../../services/employees.data.service';
+import {Department} from '../../../departments/models/department';
+import {DepartmentDataService} from '../../../departments/services/department.data.service';
 
 @Component({
   selector: 'app-employees',
@@ -15,15 +17,27 @@ export class EmployeesComponent implements OnInit {
   titleCard: string;
   activeCreate: boolean;
   activeEdit: boolean;
+  department: Department;
+  departments: any;
+  idDepartment: bigint;
 
-  constructor(private employeeService: EmployeesDataService, private toastr: ToastrService) { }
+  constructor(private employeeService: EmployeesDataService,
+              private toastr: ToastrService,
+              private departmentService: DepartmentDataService) { }
 
   ngOnInit(): void {
+    this.getDepartments();
     this.activeCreate = true;
     this.activeEdit = false;
     this.titleCard = 'Agregar Empleado';
     this.employee = new Employee();
     this.getEmployees();
+  }
+
+  getDepartments() {
+    this.departmentService.getAll().subscribe(res => {
+      this.departments = res;
+    });
   }
 
   getEmployees() {
@@ -41,6 +55,7 @@ export class EmployeesComponent implements OnInit {
   }
 
   createEmployee() {
+    this.employee.department = Number(this.idDepartment);
     this.employeeService.create(this.employee).subscribe(res => {
       if (res) {
         this.toastr.success( 'Agregado exitosamente', 'Empleado');

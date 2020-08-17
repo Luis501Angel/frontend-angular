@@ -26,6 +26,13 @@
                 <input type="text" class="form-control" [(ngModel)]="employee.phoneNumberEmployee">
               </div>
 
+              <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Departamento </label>
+                    <select id="rol" class="custom-select" [(ngModel)]="idDepartment" [ngModelOptions]="{standalone: true}">
+                      <option value="{{department.idDepartment}}" *ngFor="let department of departments">{{department.nameDepartment}}</option>
+                    </select>
+              </div>
+
               <div class="col-md-12">
                 <button class="btn btn-primary float-right" (click)="createEmployee()" *ngIf="activeCreate">Guardar</button>
               </div>
@@ -53,30 +60,36 @@
               </div>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-3">
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Nombre: </label>
                 <p class="card-text">{{employee.nameEmployee}}</p>
               </div>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-3">
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Direccion: </label>
                 <p class="card-text">{{employee.addressEmployee}}</p>
               </div>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-sm-3">
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">Telefono: </label>
                 <p class="card-text">{{employee.phoneNumberEmployee}}</p>
               </div>
             </div>
 
-            <div class="col-md-2">
-              <button class="btn btn-info float-right" data-toggle="modal"
-                      (click)="activeEditEmployee(employee.idEmployee)">Editar</button>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Departamento: </label>
+                <p class="card-text">{{employee.department.nameDepartment}}</p>
+              </div>
+            </div>
+
+            <div class="col-md-10">
+              <button class="btn btn-info float-right" (click)="activeEditEmployee(employee.idEmployee)">Editar</button>
             </div>
 
             <div class="col-md-2">
