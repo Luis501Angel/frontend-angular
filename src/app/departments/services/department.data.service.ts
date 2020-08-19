@@ -27,6 +27,7 @@ export class DepartmentDataService {
   }
 
   getAll() {
+    console.log(environment.token);
     return this.http.get(environment.url + '/departments', this.httpOptions).pipe(retry(1), catchError(this.handleError));
   }
 

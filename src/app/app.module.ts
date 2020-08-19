@@ -8,7 +8,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './home/home.component';
 import { EmployeesDataService } from './employees/services/employees.data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DepartmentsComponent } from './departments/components/departments/departments.component';
@@ -21,7 +20,6 @@ import { LoginComponent } from './user/components/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     DepartmentsComponent,
     EmployeesComponent,
     SidebarComponent,

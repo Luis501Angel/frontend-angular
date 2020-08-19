@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import {Department} from '../../departments/models/department';
 import {Employee} from '../models/employee';
 
 @Injectable({
@@ -28,6 +27,7 @@ export class EmployeesDataService {
   }
 
   getAll() {
+    console.log(environment.token);
     return this.http.get(environment.url + '/employees' , this.httpOptions).pipe(retry(1), catchError(this.handleError));
   }
 

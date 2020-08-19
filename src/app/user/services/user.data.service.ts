@@ -10,28 +10,32 @@ import {User} from '../models/user';
 })
 export class UserDataService {
 
-  httpOptions = {
+  httpOptionsJSON = {
     headers: new HttpHeaders({
-      Authorization: 'Bearer ' + environment.token,
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
-      Accept: '*'
+      Accept: 'application/json'
     })
   };
 
   constructor(private http: HttpClient) { }
 
   login(username, password): Observable<any> {
-    const body = new HttpParams()
-      .set('user', username)
-      .set('password', password);
+    const body = new URLSearchParams();
+    body.set('user', username);
+    body.set('password', password);
 
-    return this.http.post(environment.url,
-      body.toString(), this.httpOptions);
+    return this.http.post(environment.url + '/login',
+      body.toString(),
+      {
+        headers: new HttpHeaders()
+          .set('Content-Type', 'application/x-www-form-urlencoded')
+      }
+    );
   }
 
   create(user: User): Observable<User> {
-    return this.http.post<User>(environment.url + '/users', user, this.httpOptions).pipe(retry(1),
+    return this.http.post<User>(environment.url + '/signup', user, this.httpOptionsJSON).pipe(retry(1),
       catchError(this.handleError));
   }
 
